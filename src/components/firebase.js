@@ -1,4 +1,6 @@
-var config = {
+import firebase from 'firebase'
+
+const config = {
   apiKey: 'AIzaSyD1UCpu5L54wqZOn89UE5jAGlBWYgKoYXM',
   authDomain: 'progress-tracker-13d1c.firebaseapp.com',
   databaseURL: 'https://progress-tracker-13d1c.firebaseio.com',
