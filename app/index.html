@@ -44,6 +44,8 @@
 
     <h2>Exercises</h2>
 
+    <ul id='exercisesList'></ul>
+
   </section>
 
   <section id='addExercises'>
@@ -53,28 +55,29 @@
     <form id="addExercise" action="javascript:">
       <fieldset>
         <label for='addTitle'>Title</label>
-        <input id='addTitle' name='addTitle' type='text' />
+        <input id='addTitle' name='addTitle' required type='text' />
       </fieldset>
       <fieldset>
         <label for='addSetting'>Setting</label>
-        <input id='addSetting' name='addSetting' type='text' />
+        <input id='addSetting' name='addSetting' required type='text' />
       </fieldset>
       <fieldset>
         <label for='addSettingType'>Setting Type</label>
-        <input id='addSettingType' name='addSettingType' type='text' />
+        <input id='addSettingType' name='addSettingType' required type='text' />
       </fieldset>
       <fieldset>
         <label for='addReps'>Reps</label>
-        <input id='addReps' name='addReps' type='text' />
+        <input id='addReps' name='addReps' required type='text' />
       </fieldset>
       <fieldset>
         <label for='addRaiseAfter'>Raise After</label>
-        <input id='addRaiseAfter' name='addRaiseAfter' type='text' />
+        <input id='addRaiseAfter' name='addRaiseAfter' required type='text' />
       </fieldset>
       <fieldset>
         <label for='addRaiseBy'>Raise By</label>
-        <input id='addRaiseBy' name='addRaiseBy' type='text' />
+        <input id='addRaiseBy' name='addRaiseBy' required type='text' />
       </fieldset>
+      <button>Add Exercise</button>
     </form>
 
   </section>

@@ -89,17 +89,60 @@
   };
   firebase.initializeApp(config);
 
+  // Listen for changes to the database
+  const exercisesRef = firebase.database().ref("exercises");
+  exercisesRef.on("value", function(snapshot) {
+    snapshot.forEach(function(childSnapshot) {
+      renderExercises(childSnapshot);
+    });
+  });
+
+  // Render Exercises
+  function renderExercises(childSnapshot) {
+    document.querySelector("#exercisesList").innerHTML += `
+      <li>
+        <h3>
+          ${childSnapshot.val().title}
+        </h3>
+        <p>
+          ${childSnapshot.val().setting} 
+          ${childSnapshot.val().settingType}
+        </p>
+        <p>
+          ${childSnapshot.val().setting} 
+          ${childSnapshot.val().settingType}
+        </p>
+        <p>
+          ${childSnapshot.val().reps}x
+        </p>
+        <p>
+          ${childSnapshot.val().raiseAfter} 
+          ${childSnapshot.val().raiseBy}
+        </p>
+      </li>`;
+  }
+
   // Add an exercise to Firebase
   function addExercise() {
     const exercisesRef = firebase.database().ref("exercises");
     const exercise = {
-      title: document.querySelector("#newTitle").value,
-      setting: document.querySelector("#newSetting").value,
-      settingType: document.querySelector("#newSettingType").value,
-      reps: document.querySelector("#newReps").value,
-      raiseAfter: document.querySelector("#newRaiseAfter").value,
-      raiseBy: document.querySelector("#newRaiseBy").value
+      title: document.querySelector("#addTitle").value,
+      setting: document.querySelector("#addSetting").value,
+      settingType: document.querySelector("#addSettingType").value,
+      reps: document.querySelector("#addReps").value,
+      raiseAfter: document.querySelector("#addRaiseAfter").value,
+      raiseBy: document.querySelector("#addRaiseBy").value
     };
     exercisesRef.push(exercise);
   }
+
+  // Listen for form submit
+  document
+    .querySelector("#addExercise")
+    .addEventListener("submit", function(e) {
+      e.preventDefault();
+
+      addExercise();
+      this.reset();
+    });
 })();
