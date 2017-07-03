@@ -1,6 +1,5 @@
-.DS_Store
 node_modules
-dist
-dist/*
-dist/*/**
-/*.log
+dist/
+.tmp
+app.yaml
+.DS_Store
