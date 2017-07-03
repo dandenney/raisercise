@@ -1,5 +1,7 @@
 import { h, Component } from 'preact'
 import firebase from '../../components/firebase'
+import Completed from './completed'
+import Failed from './failed'
 import style from './style'
 
 export default class Home extends Component {
@@ -12,7 +14,6 @@ export default class Home extends Component {
       reps: '',
       raiseAfter: '',
       raiseBy: '',
-      series: [],
       exercises: []
     }
     this.handleChange = this.handleChange.bind(this)
@@ -43,8 +44,7 @@ export default class Home extends Component {
       settingType: '',
       reps: '',
       raiseAfter: '',
-      raiseBy: '',
-      series: []
+      raiseBy: ''
     })
   }
 
@@ -73,6 +73,34 @@ export default class Home extends Component {
   render () {
     return (
       <div class={style.home}>
+        <section class="display-item">
+          <div class="wrapper">
+            <ul>
+              {this.state.exercises.map(exercise => {
+                return (
+                  <li key={exercise.id}>
+                    <h2>
+                      {exercise.title}
+                    </h2>
+                    <p>
+                      {exercise.setting}
+                      &nbsp;
+                      {exercise.settingType}
+                    </p>
+                    <p>
+                      <Completed exerciseID={exercise.id} />
+                      <Failed exerciseID={exercise.id} />
+                    </p>
+                    <p>
+                      Raise by {exercise.raiseBy} {exercise.settingType} after{' '}
+                      {exercise.raiseAfter} sets of {exercise.reps} reps.
+                    </p>
+                  </li>
+                )
+              })}
+            </ul>
+          </div>
+        </section>
         <form onSubmit={this.handleSubmit}>
           <p>
             <input
@@ -130,30 +158,6 @@ export default class Home extends Component {
           </p>
           <button>Add exercise</button>
         </form>
-        <section class="display-item">
-          <div class="wrapper">
-            <ul>
-              {this.state.exercises.map(exercise => {
-                return (
-                  <li key={exercise.id}>
-                    <h2>
-                      {exercise.title}
-                    </h2>
-                    <p>
-                      {exercise.setting}
-                      &nbsp;
-                      {exercise.settingType}
-                    </p>
-                    <p>
-                      Raise by {exercise.raiseBy} {exercise.settingType} after{' '}
-                      {exercise.raiseAfter} sets of {exercise.reps} reps.
-                    </p>
-                  </li>
-                )
-              })}
-            </ul>
-          </div>
-        </section>
       </div>
     )
   }
