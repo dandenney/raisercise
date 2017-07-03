@@ -99,15 +99,12 @@
 
   // Render Exercises
   function renderExercises(childSnapshot) {
+    console.log(childSnapshot.key);
     document.querySelector("#exercisesList").innerHTML += `
       <li>
         <h3>
           ${childSnapshot.val().title}
         </h3>
-        <p>
-          ${childSnapshot.val().setting} 
-          ${childSnapshot.val().settingType}
-        </p>
         <p>
           ${childSnapshot.val().setting} 
           ${childSnapshot.val().settingType}
@@ -119,7 +116,19 @@
           ${childSnapshot.val().raiseAfter} 
           ${childSnapshot.val().raiseBy}
         </p>
+        <p>
+          <button class='inputStatus' data-key='${childSnapshot.key}' data-completed='true' data-setting='${childSnapshot.val().setting}'>Completed</button>
+          <button class='inputStatus' data-key='${childSnapshot.key}' data-completed='false'>Failed</button>
+        </p>
       </li>`;
+
+    let inputStatus = document.querySelectorAll(".inputStatus"), i;
+
+    for (i = 0; i < inputStatus.length; ++i) {
+      inputStatus[i].addEventListener("click", function() {
+        console.log("clicked");
+      });
+    }
   }
 
   // Add an exercise to Firebase
