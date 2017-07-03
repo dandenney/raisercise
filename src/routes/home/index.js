@@ -7,7 +7,11 @@ export default class Home extends Component {
     super()
     this.state = {
       title: '',
+      setting: '',
       settingType: '',
+      reps: '',
+      raiseAfter: '',
+      raiseBy: '',
       series: [],
       exercises: []
     }
@@ -26,13 +30,21 @@ export default class Home extends Component {
     const exercisesRef = firebase.database().ref('exercises')
     const exercise = {
       title: this.state.title,
-      settingType: this.state.settingType
+      setting: this.state.setting,
+      settingType: this.state.settingType,
+      reps: this.state.reps,
+      raiseAfter: this.state.raiseAfter,
+      raiseBy: this.state.raiseBy
     }
     exercisesRef.push(exercise)
     this.setState({
       title: '',
+      setting: '',
       settingType: '',
-      setting: ''
+      reps: '',
+      raiseAfter: '',
+      raiseBy: '',
+      series: []
     })
   }
 
@@ -45,7 +57,11 @@ export default class Home extends Component {
         newState.push({
           id: exercise,
           title: exercises[exercise].title,
-          settingType: exercises[exercise].settingType
+          setting: exercises[exercise].setting,
+          settingType: exercises[exercise].settingType,
+          reps: exercises[exercise].reps,
+          raiseAfter: exercises[exercise].raiseAfter,
+          raiseBy: exercises[exercise].raiseBy
         })
       }
       this.setState({
@@ -70,6 +86,15 @@ export default class Home extends Component {
           <p>
             <input
               type="text"
+              name="setting"
+              onChange={this.handleChange}
+              placeholder="What's the starting setting?"
+              value={this.state.setting}
+            />
+          </p>
+          <p>
+            <input
+              type="text"
               name="settingType"
               onChange={this.handleChange}
               placeholder="What's it measured in?"
@@ -79,10 +104,28 @@ export default class Home extends Component {
           <p>
             <input
               type="text"
-              name="setting"
+              name="reps"
               onChange={this.handleChange}
-              placeholder="What's the starting setting?"
-              value={this.state.setting}
+              placeholder="How many repetitions?"
+              value={this.state.reps}
+            />
+          </p>
+          <p>
+            <input
+              type="text"
+              name="raiseAfter"
+              onChange={this.handleChange}
+              placeholder="How many sessions to raise the setting?"
+              value={this.state.raiseAfter}
+            />
+          </p>
+          <p>
+            <input
+              type="text"
+              name="raiseBy"
+              onChange={this.handleChange}
+              placeholder="How much to raise the setting?"
+              value={this.state.raiseBy}
             />
           </p>
           <button>Add exercise</button>
@@ -97,7 +140,13 @@ export default class Home extends Component {
                       {exercise.title}
                     </h2>
                     <p>
+                      {exercise.setting}
+                      &nbsp;
                       {exercise.settingType}
+                    </p>
+                    <p>
+                      Raise by {exercise.raiseBy} {exercise.settingType} after{' '}
+                      {exercise.raiseAfter} sets of {exercise.reps} reps.
                     </p>
                   </li>
                 )
