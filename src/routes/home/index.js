@@ -1,7 +1,5 @@
 import { h, Component } from 'preact'
 import firebase from '../../components/firebase'
-import Completed from './completed'
-import Failed from './failed'
 import style from './style'
 
 export default class Home extends Component {
@@ -24,6 +22,28 @@ export default class Home extends Component {
     this.setState({
       [e.target.name]: e.target.value
     })
+  }
+
+  handleCompleted (exerciseID) {
+    const statusRef = firebase
+      .database()
+      .ref(`exercises/${exerciseID}/sessions`)
+    const session = {
+      completed: true,
+      completedDate: Date.now()
+    }
+    statusRef.push(session)
+  }
+
+  handleFailed (exerciseID) {
+    const statusRef = firebase
+      .database()
+      .ref(`exercises/${exerciseID}/sessions`)
+    const session = {
+      completed: false,
+      completedDate: Date.now()
+    }
+    statusRef.push(session)
   }
 
   handleSubmit (e) {
@@ -88,8 +108,12 @@ export default class Home extends Component {
                       {exercise.settingType}
                     </p>
                     <p>
-                      <Completed exerciseID={exercise.id} />
-                      <Failed exerciseID={exercise.id} />
+                      <button onClick={() => this.handleCompleted(exercise.id)}>
+                        Completed
+                      </button>
+                      <button onClick={() => this.handleFailed(exercise.id)}>
+                        Failed
+                      </button>
                     </p>
                     <p>
                       Raise by {exercise.raiseBy} {exercise.settingType} after{' '}
