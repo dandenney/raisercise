@@ -1,50 +1,51 @@
-import { h, Component } from 'preact'
-import firebase from '../../components/firebase'
-import style from './style'
+import { h, Component } from "preact";
+import firebase from "../../components/firebase";
+import SignIn from "./signIn";
+import style from "./style";
 
 export default class Home extends Component {
-  constructor () {
-    super()
+  constructor() {
+    super();
     this.state = {
       exercises: []
-    }
-    this.handleChange = this.handleChange.bind(this)
-    this.handleSubmit = this.handleSubmit.bind(this)
+    };
+    this.handleChange = this.handleChange.bind(this);
+    this.handleSubmit = this.handleSubmit.bind(this);
   }
 
-  handleChange (e) {
+  handleChange(e) {
     this.setState({
       [e.target.name]: e.target.value
-    })
+    });
   }
 
-  handleCompleted (exerciseID, exerciseSetting) {
+  handleCompleted(exerciseID, exerciseSetting) {
     const statusRef = firebase
       .database()
-      .ref(`exercises/${exerciseID}/sessions`)
+      .ref(`exercises/${exerciseID}/sessions`);
     const session = {
       completed: true,
       completedDate: Date.now(),
       setting: exerciseSetting
-    }
-    statusRef.push(session)
+    };
+    statusRef.push(session);
   }
 
-  handleFailed (exerciseID, exerciseSetting) {
+  handleFailed(exerciseID, exerciseSetting) {
     const statusRef = firebase
       .database()
-      .ref(`exercises/${exerciseID}/sessions`)
+      .ref(`exercises/${exerciseID}/sessions`);
     const session = {
       completed: false,
       completedDate: Date.now(),
       setting: exerciseSetting
-    }
-    statusRef.push(session)
+    };
+    statusRef.push(session);
   }
 
-  handleSubmit (e) {
-    e.preventDefault()
-    const exercisesRef = firebase.database().ref('exercises')
+  handleSubmit(e) {
+    e.preventDefault();
+    const exercisesRef = firebase.database().ref("exercises");
     const exercise = {
       title: this.state.title,
       setting: this.state.setting,
@@ -52,15 +53,15 @@ export default class Home extends Component {
       reps: this.state.reps,
       raiseAfter: this.state.raiseAfter,
       raiseBy: this.state.raiseBy
-    }
-    exercisesRef.push(exercise)
+    };
+    exercisesRef.push(exercise);
   }
 
-  componentDidMount () {
-    const exercisesRef = firebase.database().ref('exercises')
-    exercisesRef.on('value', snapshot => {
-      let exercises = snapshot.val()
-      let newState = []
+  componentDidMount() {
+    const exercisesRef = firebase.database().ref("exercises");
+    exercisesRef.on("value", snapshot => {
+      let exercises = snapshot.val();
+      let newState = [];
       for (let exercise in exercises) {
         newState.push({
           id: exercise,
@@ -71,17 +72,18 @@ export default class Home extends Component {
           raiseAfter: exercises[exercise].raiseAfter,
           raiseBy: exercises[exercise].raiseBy,
           sessions: exercises[exercise].sessions
-        })
+        });
       }
       this.setState({
         exercises: newState
-      })
-    })
+      });
+    });
   }
 
-  render () {
+  render() {
     return (
       <div class={style.home}>
+        <SignIn />
         <section class="display-item">
           <div class="wrapper">
             <ul>
@@ -111,11 +113,11 @@ export default class Home extends Component {
                       </button>
                     </p>
                     <p>
-                      Raise by {exercise.raiseBy} {exercise.settingType} after{' '}
+                      Raise by {exercise.raiseBy} {exercise.settingType} after{" "}
                       {exercise.raiseAfter} sets of {exercise.reps} reps.
                     </p>
                   </li>
-                )
+                );
               })}
             </ul>
           </div>
@@ -178,6 +180,6 @@ export default class Home extends Component {
           <button>Add exercise</button>
         </form>
       </div>
-    )
+    );
   }
 }
