@@ -28,7 +28,7 @@ export default class NewExercise extends Component {
     const exercisesRef = database.ref("/" + this.props.user.uid + "/exercises");
     exercisesRef.push({
       name: this.state.name,
-      setting: this.state.name,
+      setting: this.state.setting,
       settingType: this.state.settingType,
       raiseAfter: this.state.raiseAfter,
       raiseBy: this.state.raiseBy,

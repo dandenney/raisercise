@@ -1,6 +1,7 @@
 import { h, Component } from "preact";
 import { auth, database } from "../../components/firebase";
 import CurrentUser from "./CurrentUser";
+import Exercises from "./Exercises";
 import NewExercise from "./NewExercise";
 import SignIn from "./SignIn";
 import style from "./style";
@@ -14,7 +15,6 @@ export default class Home extends Component {
     };
 
     this.handleChange = this.handleChange.bind(this);
-    this.handleSubmit = this.handleSubmit.bind(this);
   }
 
   handleChange(e) {
@@ -48,19 +48,21 @@ export default class Home extends Component {
   }
 
   componentDidMount() {
-    const exercisesRef = database.ref("/" + this.props.user.uid + "/exercises");
-
     auth.onAuthStateChanged(currentUser => {
       this.setState({ currentUser });
-    });
 
-    exercisesRef.on("value", snapshot => {
-      this.setState({ exercises: snapshot.val() });
+      const exercisesRef = database.ref(
+        "/" + this.state.currentUser.uid + "/exercises"
+      );
+
+      exercisesRef.on("value", snapshot => {
+        this.setState({ exercises: snapshot.val() });
+      });
     });
   }
 
   render() {
-    const { currentUser } = this.state;
+    const { currentUser, exercises } = this.state;
 
     return (
       <div class={style.home}>
@@ -69,6 +71,7 @@ export default class Home extends Component {
           {currentUser &&
             <div>
               <CurrentUser user={currentUser} />
+              <Exercises exercises={exercises} user={currentUser} />
               <NewExercise user={currentUser} />
             </div>}
         </section>

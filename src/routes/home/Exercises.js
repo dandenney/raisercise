@@ -1,14 +1,21 @@
 import { h, Component } from "preact";
-import { database } from "./firebase";
-import Exercise from './Exercise';
-import map from 'lodash/map';
+import { database } from "../../components/firebase";
+import Exercise from "./Exercise";
+import map from "lodash/map";
 
 export default class Exercises extends Component {
-  constructor () {
-    super()
+  constructor(props) {
+    super(props);
   }
 
-  render () {
-    return ()
+  render() {
+    const { user, exercises } = this.props;
+    return (
+      <section>
+        {map(exercises, (exercise, key) =>
+          <Exercise key={key} {...exercise} user={user} />
+        )}
+      </section>
+    );
   }
 }
