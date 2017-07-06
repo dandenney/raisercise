@@ -5,7 +5,12 @@ export default class NewExercise extends Component {
   constructor() {
     super();
     this.state = {
-      name: ""
+      name: "",
+      raiseAfter: "",
+      raiseBy: "",
+      reps: "",
+      setting: "",
+      settingType: ""
     };
 
     this.handleChange = this.handleChange.bind(this);
@@ -21,11 +26,25 @@ export default class NewExercise extends Component {
   handleSubmit(e) {
     e.preventDefault();
     const exercisesRef = database.ref("/" + this.props.user.uid + "/exercises");
-    exercisesRef.push({ name: this.state.name });
+    exercisesRef.push({
+      name: this.state.name,
+      setting: this.state.name,
+      settingType: this.state.settingType,
+      raiseAfter: this.state.raiseAfter,
+      raiseBy: this.state.raiseBy,
+      reps: this.state.reps
+    });
   }
 
   render() {
-    const { name } = this.state;
+    const {
+      name,
+      setting,
+      settingType,
+      raiseAfter,
+      raiseBy,
+      reps
+    } = this.state;
 
     return (
       <section>
@@ -39,6 +58,51 @@ export default class NewExercise extends Component {
               onChange={this.handleChange}
               placeholder="What's the exercise named?"
               value={this.state.name}
+            />
+          </p>
+          <p>
+            <input
+              type="number"
+              name="setting"
+              onChange={this.handleChange}
+              placeholder="What's the starting setting?"
+              value={this.state.setting}
+            />
+          </p>
+          <p>
+            <input
+              type="text"
+              name="settingType"
+              onChange={this.handleChange}
+              placeholder="What's it measured in?"
+              value={this.state.settingType}
+            />
+          </p>
+          <p>
+            <input
+              type="number"
+              name="reps"
+              onChange={this.handleChange}
+              placeholder="How many repetitions?"
+              value={this.state.reps}
+            />
+          </p>
+          <p>
+            <input
+              type="number"
+              name="raiseAfter"
+              onChange={this.handleChange}
+              placeholder="How many sessions to raise the setting?"
+              value={this.state.raiseAfter}
+            />
+          </p>
+          <p>
+            <input
+              type="number"
+              name="raiseBy"
+              onChange={this.handleChange}
+              placeholder="How much to raise the setting?"
+              value={this.state.raiseBy}
             />
           </p>
           <input
