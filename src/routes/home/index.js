@@ -6,12 +6,6 @@ export default class Home extends Component {
   constructor () {
     super()
     this.state = {
-      title: '',
-      setting: '',
-      settingType: '',
-      reps: '',
-      raiseAfter: '',
-      raiseBy: '',
       exercises: []
     }
     this.handleChange = this.handleChange.bind(this)
@@ -24,24 +18,26 @@ export default class Home extends Component {
     })
   }
 
-  handleCompleted (exerciseID) {
+  handleCompleted (exerciseID, exerciseSetting) {
     const statusRef = firebase
       .database()
       .ref(`exercises/${exerciseID}/sessions`)
     const session = {
       completed: true,
-      completedDate: Date.now()
+      completedDate: Date.now(),
+      setting: exerciseSetting
     }
     statusRef.push(session)
   }
 
-  handleFailed (exerciseID) {
+  handleFailed (exerciseID, exerciseSetting) {
     const statusRef = firebase
       .database()
       .ref(`exercises/${exerciseID}/sessions`)
     const session = {
       completed: false,
-      completedDate: Date.now()
+      completedDate: Date.now(),
+      setting: exerciseSetting
     }
     statusRef.push(session)
   }
@@ -58,14 +54,6 @@ export default class Home extends Component {
       raiseBy: this.state.raiseBy
     }
     exercisesRef.push(exercise)
-    this.setState({
-      title: '',
-      setting: '',
-      settingType: '',
-      reps: '',
-      raiseAfter: '',
-      raiseBy: ''
-    })
   }
 
   componentDidMount () {
@@ -81,7 +69,8 @@ export default class Home extends Component {
           settingType: exercises[exercise].settingType,
           reps: exercises[exercise].reps,
           raiseAfter: exercises[exercise].raiseAfter,
-          raiseBy: exercises[exercise].raiseBy
+          raiseBy: exercises[exercise].raiseBy,
+          sessions: exercises[exercise].sessions
         })
       }
       this.setState({
@@ -108,10 +97,16 @@ export default class Home extends Component {
                       {exercise.settingType}
                     </p>
                     <p>
-                      <button onClick={() => this.handleCompleted(exercise.id)}>
+                      <button
+                        onClick={() =>
+                          this.handleCompleted(exercise.id, exercise.setting)}
+                      >
                         Completed
                       </button>
-                      <button onClick={() => this.handleFailed(exercise.id)}>
+                      <button
+                        onClick={() =>
+                          this.handleFailed(exercise.id, exercise.setting)}
+                      >
                         Failed
                       </button>
                     </p>
