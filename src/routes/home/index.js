@@ -13,8 +13,6 @@ export default class Home extends Component {
       exercises: null
     };
 
-    this.exercisesRef = database.ref("/exercises");
-
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
   }
@@ -49,26 +47,14 @@ export default class Home extends Component {
     statusRef.push(session);
   }
 
-  handleSubmit(e) {
-    e.preventDefault();
-    const exercisesRef = firebase.database().ref("exercises");
-    const exercise = {
-      title: this.state.title,
-      setting: this.state.setting,
-      settingType: this.state.settingType,
-      reps: this.state.reps,
-      raiseAfter: this.state.raiseAfter,
-      raiseBy: this.state.raiseBy
-    };
-    exercisesRef.push(exercise);
-  }
-
   componentDidMount() {
+    const exercisesRef = database.ref("/" + this.props.user.uid + "/exercises");
+
     auth.onAuthStateChanged(currentUser => {
       this.setState({ currentUser });
     });
 
-    this.exercisesRef.on("value", snapshot => {
+    exercisesRef.on("value", snapshot => {
       this.setState({ exercises: snapshot.val() });
     });
   }
