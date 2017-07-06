@@ -7,8 +7,12 @@ export default class Home extends Component {
   constructor() {
     super();
     this.state = {
-      currentUser: null
+      currentUser: null,
+      exercises: null
     };
+
+    this.exercisesRef = database.ref("/exercises");
+
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
   }
@@ -60,6 +64,10 @@ export default class Home extends Component {
   componentDidMount() {
     auth.onAuthStateChanged(currentUser => {
       this.setState({ currentUser });
+    });
+
+    this.exercisesRef.on("value", snapshot => {
+      this.setState({ exercises: snapshot.val() });
     });
   }
 
