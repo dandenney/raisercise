@@ -1,7 +1,8 @@
 import { h, Component } from "preact";
 import { auth, database } from "../../components/firebase";
-import SignIn from "./SignIn";
 import CurrentUser from "./CurrentUser";
+import NewExercise from "./NewExercise";
+import SignIn from "./SignIn";
 import style from "./style";
 
 export default class Home extends Component {
@@ -82,63 +83,7 @@ export default class Home extends Component {
           {currentUser &&
             <div>
               <CurrentUser user={currentUser} />
-              <form onSubmit={this.handleSubmit}>
-                <p>
-                  <input
-                    type="text"
-                    name="title"
-                    onChange={this.handleChange}
-                    placeholder="What's the exercise called?"
-                    value={this.state.title}
-                  />
-                </p>
-                <p>
-                  <input
-                    type="text"
-                    name="setting"
-                    onChange={this.handleChange}
-                    placeholder="What's the starting setting?"
-                    value={this.state.setting}
-                  />
-                </p>
-                <p>
-                  <input
-                    type="text"
-                    name="settingType"
-                    onChange={this.handleChange}
-                    placeholder="What's it measured in?"
-                    value={this.state.settingType}
-                  />
-                </p>
-                <p>
-                  <input
-                    type="text"
-                    name="reps"
-                    onChange={this.handleChange}
-                    placeholder="How many repetitions?"
-                    value={this.state.reps}
-                  />
-                </p>
-                <p>
-                  <input
-                    type="text"
-                    name="raiseAfter"
-                    onChange={this.handleChange}
-                    placeholder="How many sessions to raise the setting?"
-                    value={this.state.raiseAfter}
-                  />
-                </p>
-                <p>
-                  <input
-                    type="text"
-                    name="raiseBy"
-                    onChange={this.handleChange}
-                    placeholder="How much to raise the setting?"
-                    value={this.state.raiseBy}
-                  />
-                </p>
-                <button>Add exercise</button>
-              </form>
+              <NewExercise user={currentUser} />
             </div>}
         </section>
       </div>
