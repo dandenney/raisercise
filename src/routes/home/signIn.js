@@ -7,7 +7,7 @@ export default class SignIn extends Component {
       <div>
         <button onClick={() => auth.signInWithRedirect(googleAuthProvider)}>
           Sign In
-        </button>;
+        </button>
       </div>
     );
   }
