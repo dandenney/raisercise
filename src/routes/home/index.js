@@ -1,6 +1,7 @@
 import { h, Component } from "preact";
 import { auth, database } from "../../components/firebase";
-import SignIn from "./signIn";
+import SignIn from "./SignIn";
+import CurrentUser from "./CurrentUser";
 import style from "./style";
 
 export default class Home extends Component {
@@ -80,7 +81,7 @@ export default class Home extends Component {
           {!currentUser && <SignIn />}
           {currentUser &&
             <div>
-              <article>User</article>
+              <CurrentUser user={currentUser} />
               <form onSubmit={this.handleSubmit}>
                 <p>
                   <input
