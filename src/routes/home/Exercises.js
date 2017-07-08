@@ -10,6 +10,7 @@ export default class Exercises extends Component {
 
   handleCompleted(key) {
     const currentUser = this.props.user;
+    const raiseBy = this.props.exercises[key].raiseBy;
     const setting = this.props.exercises[key].setting;
     const completedCount = filter(this.props.exercises[key].sets, {
       setting: setting,
@@ -27,6 +28,23 @@ export default class Exercises extends Component {
           completedDate: Date.now(),
           setting: setting
         });
+    } else {
+      const newSetting = Number(setting) + Number(raiseBy);
+      database
+        .ref("/" + currentUser.uid)
+        .child("exercises")
+        .child(key)
+        .child("/sets")
+        .push({
+          completed: true,
+          completedDate: Date.now(),
+          setting: newSetting
+        });
+      database
+        .ref("/" + currentUser.uid)
+        .child("exercises")
+        .child(key)
+        .update({ setting: newSetting });
     }
   }
 
