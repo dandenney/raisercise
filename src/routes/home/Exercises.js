@@ -1,7 +1,7 @@
 import { h, Component } from "preact";
 import { database } from "../../components/firebase";
 import Exercise from "./Exercise";
-import map from "lodash/map";
+import { filter, map } from "lodash";
 
 export default class Exercises extends Component {
   constructor(props) {
@@ -11,16 +11,23 @@ export default class Exercises extends Component {
   handleCompleted(key) {
     const currentUser = this.props.user;
     const setting = this.props.exercises[key].setting;
-    database
-      .ref("/" + currentUser.uid)
-      .child("exercises")
-      .child(key)
-      .child("/sets")
-      .push({
-        completed: true,
-        completedDate: Date.now(),
-        setting: setting
-      });
+    const completedCount = filter(this.props.exercises[key].sets, {
+      setting: setting,
+      completed: true
+    }).length;
+
+    if (completedCount < 5) {
+      database
+        .ref("/" + currentUser.uid)
+        .child("exercises")
+        .child(key)
+        .child("/sets")
+        .push({
+          completed: true,
+          completedDate: Date.now(),
+          setting: setting
+        });
+    }
   }
 
   handleFailed(key) {

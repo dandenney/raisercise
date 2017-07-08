@@ -1,5 +1,5 @@
 import { h, Component } from "preact";
-import map from "lodash/map";
+import { map } from "lodash";
 
 export default class Exercise extends Component {
   render() {
