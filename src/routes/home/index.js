@@ -24,27 +24,23 @@ export default class Home extends Component {
   }
 
   handleCompleted(exerciseID, exerciseSetting) {
-    const statusRef = firebase
-      .database()
-      .ref(`exercises/${exerciseID}/sessions`);
-    const session = {
+    const statusRef = firebase.database().ref(`exercises/${exerciseID}/sets`);
+    const set = {
       completed: true,
       completedDate: Date.now(),
       setting: exerciseSetting
     };
-    statusRef.push(session);
+    statusRef.push(set);
   }
 
   handleFailed(exerciseID, exerciseSetting) {
-    const statusRef = firebase
-      .database()
-      .ref(`exercises/${exerciseID}/sessions`);
-    const session = {
+    const statusRef = firebase.database().ref(`exercises/${exerciseID}/sets`);
+    const set = {
       completed: false,
       completedDate: Date.now(),
       setting: exerciseSetting
     };
-    statusRef.push(session);
+    statusRef.push(set);
   }
 
   componentDidMount() {

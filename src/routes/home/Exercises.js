@@ -15,7 +15,7 @@ export default class Exercises extends Component {
       .ref("/" + currentUser.uid)
       .child("exercises")
       .child(key)
-      .child("/sessions")
+      .child("/sets")
       .push({
         completed: true,
         completedDate: Date.now(),

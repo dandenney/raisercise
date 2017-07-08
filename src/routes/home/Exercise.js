@@ -6,14 +6,13 @@ export default class Exercise extends Component {
     const {
       handleCompleted,
       name,
-      sessions,
+      sets,
       setting,
       settingType,
       raiseAfter,
       raiseBy,
       reps
     } = this.props;
-    console.log(sessions);
     return (
       <article>
         <h3>
@@ -28,24 +27,23 @@ export default class Exercise extends Component {
           </button>
         </p>
         <ul>
-          {sessions &&
-            map(sessions, (session, key) =>
+          {sets &&
+            map(sets, (set, key) =>
               <li key={key}>
                 <p>
-                  {session.completed}
+                  {set.completed}
                 </p>
                 <p>
-                  {session.completedDate}
+                  {set.completedDate}
                 </p>
                 <p>
-                  {session.setting}
+                  {set.setting}
                 </p>
               </li>
             )}
         </ul>
         <p>
-          Raise by {raiseBy} {settingType} after {raiseAfter} sessions {reps}{" "}
-          reps.
+          Raise by {raiseBy} {settingType} after {raiseAfter} sets {reps} reps.
         </p>
       </article>
     );

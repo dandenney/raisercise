@@ -92,7 +92,7 @@ export default class NewExercise extends Component {
               type="number"
               name="raiseAfter"
               onChange={this.handleChange}
-              placeholder="How many sessions to raise the setting?"
+              placeholder="How many sets to raise the setting?"
               value={this.state.raiseAfter}
             />
           </p>
