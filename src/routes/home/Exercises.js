@@ -46,6 +46,7 @@ export default class Exercises extends Component {
           <Exercise
             handleCompleted={() => this.handleCompleted(key)}
             handleFailed={() => this.handleFailed(key)}
+            handleRaise={() => this.handleRaise(key)}
             key={key}
             {...exercise}
             user={user}

@@ -9,18 +9,11 @@ import style from "./style";
 export default class Home extends Component {
   constructor() {
     super();
+
     this.state = {
       currentUser: null,
       exercises: null
     };
-
-    this.handleChange = this.handleChange.bind(this);
-  }
-
-  handleChange(e) {
-    this.setState({
-      [e.target.name]: e.target.value
-    });
   }
 
   componentDidMount() {
