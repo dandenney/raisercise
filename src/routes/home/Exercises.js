@@ -10,6 +10,7 @@ export default class Exercises extends Component {
 
   handleCompleted(key) {
     const currentUser = this.props.user;
+    const raiseAfter = this.props.exercises[key].raiseAfter;
     const raiseBy = this.props.exercises[key].raiseBy;
     const setting = this.props.exercises[key].setting;
     const completedCount = filter(this.props.exercises[key].sets, {
@@ -17,7 +18,7 @@ export default class Exercises extends Component {
       completed: true
     }).length;
 
-    if (completedCount < 5) {
+    if (completedCount < raiseAfter) {
       database
         .ref("/" + currentUser.uid)
         .child("exercises")
