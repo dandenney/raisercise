@@ -8,12 +8,32 @@ export default class Exercises extends Component {
     super(props);
   }
 
+  handleCompleted(key) {
+    const currentUser = this.props.user;
+    const setting = this.props.exercises[key].setting;
+    database
+      .ref("/" + currentUser.uid)
+      .child("exercises")
+      .child(key)
+      .child("/sessions")
+      .push({
+        completed: true,
+        completedDate: Date.now(),
+        setting: setting
+      });
+  }
+
   render() {
     const { user, exercises } = this.props;
     return (
       <section>
         {map(exercises, (exercise, key) =>
-          <Exercise key={key} {...exercise} user={user} />
+          <Exercise
+            handleCompleted={() => this.handleCompleted(key)}
+            key={key}
+            {...exercise}
+            user={user}
+          />
         )}
       </section>
     );
