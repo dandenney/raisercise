@@ -5,6 +5,7 @@ export default class Exercise extends Component {
   render() {
     const {
       handleCompleted,
+      handleFailed,
       name,
       sets,
       setting,
@@ -24,6 +25,9 @@ export default class Exercise extends Component {
         <p>
           <button onClick={handleCompleted} setting={setting}>
             Completed
+          </button>
+          <button onClick={handleFailed} setting={setting}>
+            Failed
           </button>
         </p>
         <ul>

@@ -23,26 +23,6 @@ export default class Home extends Component {
     });
   }
 
-  handleCompleted(exerciseID, exerciseSetting) {
-    const statusRef = firebase.database().ref(`exercises/${exerciseID}/sets`);
-    const set = {
-      completed: true,
-      completedDate: Date.now(),
-      setting: exerciseSetting
-    };
-    statusRef.push(set);
-  }
-
-  handleFailed(exerciseID, exerciseSetting) {
-    const statusRef = firebase.database().ref(`exercises/${exerciseID}/sets`);
-    const set = {
-      completed: false,
-      completedDate: Date.now(),
-      setting: exerciseSetting
-    };
-    statusRef.push(set);
-  }
-
   componentDidMount() {
     auth.onAuthStateChanged(currentUser => {
       this.setState({ currentUser });
