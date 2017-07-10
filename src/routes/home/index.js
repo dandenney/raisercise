@@ -34,17 +34,15 @@ export default class Home extends Component {
     const { currentUser, exercises } = this.state;
 
     return (
-      <div class={style.home}>
-        <section class="display-item">
-          {!currentUser && <SignIn />}
-          {currentUser &&
-            <div>
-              <CurrentUser user={currentUser} />
-              <Exercises exercises={exercises} user={currentUser} />
-              <NewExercise user={currentUser} />
-            </div>}
-        </section>
-      </div>
+      <section class={style.home}>
+        {!currentUser && <SignIn />}
+        {currentUser &&
+          <div>
+            <CurrentUser user={currentUser} />
+            <Exercises exercises={exercises} user={currentUser} />
+            <NewExercise user={currentUser} />
+          </div>}
+      </section>
     );
   }
 }
