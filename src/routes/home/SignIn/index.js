@@ -7,7 +7,11 @@ export default class SignIn extends Component {
   render() {
     return (
       <section class={style.signIn}>
-        <button onClick={() => auth.signInWithRedirect(googleAuthProvider)}>
+        <h1 class={style.h1}>Raisercise</h1>
+        <button
+          class={style.button}
+          onClick={() => auth.signInWithRedirect(googleAuthProvider)}
+        >
           Sign In
         </button>
       </section>

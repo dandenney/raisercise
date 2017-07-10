@@ -1,0 +1,27 @@
+.signIn {
+  align-items: center;
+	display: flex;
+	flex-direction: column;
+  flex-grow: 1;
+	justify-content: center;
+}
+
+h1 {
+  color: #ffffff;
+  font-size: 48px;
+  margin: 0;
+}
+
+.button {
+  background: #4ebff2;
+  border: 0;
+  border-radius: 32px;
+  box-shadow: 0 3px 6px rgba(#000, 0.2);
+  color: #ffffff;
+  font-family: inherit;
+  font-size: 32px;
+  font-weight: bold;
+  line-height: 1;
+  margin: 8px 0 32px;
+  padding: 12px 40px;
+}
