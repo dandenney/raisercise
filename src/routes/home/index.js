@@ -37,10 +37,10 @@ export default class Home extends Component {
       <section class={style.home}>
         {!currentUser && <SignIn />}
         {currentUser &&
-          <div>
-            <CurrentUser user={currentUser} />
+          <div class={style.flex}>
             <Exercises exercises={exercises} user={currentUser} />
             <NewExercise user={currentUser} />
+            <CurrentUser user={currentUser} />
           </div>}
       </section>
     );
