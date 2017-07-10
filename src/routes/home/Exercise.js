@@ -1,5 +1,5 @@
 import { h, Component } from "preact";
-import { map } from "lodash";
+import { filter, map } from "lodash";
 
 export default class Exercise extends Component {
   render() {
@@ -14,6 +14,10 @@ export default class Exercise extends Component {
       raiseBy,
       reps
     } = this.props;
+    const filters = filter(sets, {
+      setting: setting,
+      completed: true
+    });
     return (
       <article>
         <h3>
@@ -31,20 +35,7 @@ export default class Exercise extends Component {
           </button>
         </p>
         <ul>
-          {sets &&
-            map(sets, (set, key) =>
-              <li key={key}>
-                <p>
-                  {set.completed}
-                </p>
-                <p>
-                  {set.completedDate}
-                </p>
-                <p>
-                  {set.setting}
-                </p>
-              </li>
-            )}
+          {sets && map(filters, (filter, key) => <li key={key} />)}
         </ul>
         <p>
           Raise by {raiseBy} {settingType} after {raiseAfter} sets {reps} reps.
