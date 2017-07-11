@@ -34,7 +34,7 @@ export default class Exercise extends Component {
             onClick={handleFailed}
             setting={setting}
           >
-            <img src="/assets/icons/bold-remove.svg" width="30" />
+            <img src="/assets/icons/bold-remove.svg" width="20" />
           </button>
           <button
             class={style.buttonCompleted}
