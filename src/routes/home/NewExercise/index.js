@@ -54,58 +54,68 @@ export default class NewExercise extends Component {
 
         <form>
           <div class={style.fieldset}>
+            <label for="name">Name</label>
             <input
               type="text"
               name="name"
               onChange={this.handleChange}
-              placeholder="What's the exercise named?"
+              placeholder="Chest Press"
               value={this.state.name}
             />
           </div>
-          <div class={style.fieldset}>
-            <input
-              type="number"
-              name="setting"
-              onChange={this.handleChange}
-              placeholder="What's the starting setting?"
-              value={this.state.setting}
-            />
+          <div class={style.split}>
+            <div class={style.fieldset}>
+              <label for="setting">Initial Setting</label>
+              <input
+                type="number"
+                name="setting"
+                onChange={this.handleChange}
+                placeholder="85"
+                value={this.state.setting}
+              />
+            </div>
+            <div class={style.fieldset}>
+              <label for="settingType">Setting Type</label>
+              <input
+                type="text"
+                name="settingType"
+                onChange={this.handleChange}
+                placeholder="lbs"
+                value={this.state.settingType}
+              />
+            </div>
           </div>
           <div class={style.fieldset}>
-            <input
-              type="text"
-              name="settingType"
-              onChange={this.handleChange}
-              placeholder="What's it measured in?"
-              value={this.state.settingType}
-            />
-          </div>
-          <div class={style.fieldset}>
+            <label for="reps">Reps</label>
             <input
               type="number"
               name="reps"
               onChange={this.handleChange}
-              placeholder="How many repetitions?"
+              placeholder="5"
               value={this.state.reps}
             />
           </div>
-          <div class={style.fieldset}>
-            <input
-              type="number"
-              name="raiseAfter"
-              onChange={this.handleChange}
-              placeholder="How many sets to raise the setting?"
-              value={this.state.raiseAfter}
-            />
-          </div>
-          <div class={style.fieldset}>
-            <input
-              type="number"
-              name="raiseBy"
-              onChange={this.handleChange}
-              placeholder="How much to raise the setting?"
-              value={this.state.raiseBy}
-            />
+          <div class={style.split}>
+            <div class={style.fieldset}>
+              <label for="raiseAfter">Raise After (Sets)</label>
+              <input
+                type="number"
+                name="raiseAfter"
+                onChange={this.handleChange}
+                placeholder="6"
+                value={this.state.raiseAfter}
+              />
+            </div>
+            <div class={style.fieldset}>
+              <label for="raiseBy">Raise By (Type)</label>
+              <input
+                type="number"
+                name="raiseBy"
+                onChange={this.handleChange}
+                placeholder="5"
+                value={this.state.raiseBy}
+              />
+            </div>
           </div>
           <input
             disable={!name}
