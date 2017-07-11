@@ -13,7 +13,7 @@ h1 {
 }
 
 .button {
-  background: #4ebff2;
+  background: #5c677e;
   border: 0;
   border-radius: 32px;
   box-shadow: 0 3px 6px rgba(#000, 0.2);
@@ -23,4 +23,12 @@ h1 {
   line-height: 1;
   margin: 8px 0 32px;
   padding: 12px 40px;
+
+  &:active,
+  &:focus,
+  &:hover {
+    background: lighten(#5c677e, 10%);
+    outline: 0;
+    transition: background 0.3s ease-in-out;
+  }
 }

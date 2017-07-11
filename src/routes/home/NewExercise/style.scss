@@ -53,4 +53,12 @@ input[type="submit"] {
   margin: 24px auto 32px;
   padding: 12px 40px;
   width: auto;
+
+  &:active,
+  &:focus,
+  &:hover {
+    background: lighten(#5c677e, 10%);
+    outline: 0;
+    transition: background 0.3s ease-in-out;
+  }
 }
