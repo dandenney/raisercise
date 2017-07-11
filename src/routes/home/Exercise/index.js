@@ -26,7 +26,7 @@ export default class Exercise extends Component {
           {name}
         </h3>
         <p class={style.setting}>
-          <span class={style.settingText}>{setting}</span> {settingType}
+          <div class={style.settingText}>{setting}</div> {settingType}
         </p>
         <p class={style.buttons}>
           <button
@@ -34,14 +34,14 @@ export default class Exercise extends Component {
             onClick={handleFailed}
             setting={setting}
           >
-            Failed
+            <img src="/assets/icons/bold-remove.svg" width="30" />
           </button>
           <button
             class={style.buttonCompleted}
             onClick={handleCompleted}
             setting={setting}
           >
-            Completed
+            <img src="/assets/icons/check-simple.svg" width="30" />
           </button>
         </p>
         <ul class={style.completedList}>
@@ -50,10 +50,6 @@ export default class Exercise extends Component {
               <li class={style.completed} key={key} />
             )}
         </ul>
-        <p class={style.instructions}>
-          Raise by {raiseBy} {settingType} after {raiseAfter} sets of {reps}{" "}
-          reps.
-        </p>
       </article>
     );
   }

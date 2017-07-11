@@ -1,14 +1,14 @@
 @import 'helpers';
 
+@import url('https://fonts.googleapis.com/css?family=Anton|Passion+One');
+
 html, body {
 	height: 100%;
 	width: 100%;
 	padding: 0;
 	margin: 0;
-	background-image: linear-gradient(120deg, #4b6cb7, #203661);
-	background-attachment: fixed;
-	font-family: 'Helvetica Neue', arial, sans-serif;
-	font-weight: 400;
+	background: #313743;
+	font-family: 'Anton', cursive;	font-weight: 400;
 	color: #ffffff;
 	-webkit-font-smoothing: antialiased;
 	-moz-osx-font-smoothing: grayscale;

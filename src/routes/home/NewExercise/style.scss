@@ -1,0 +1,11 @@
+.fieldset {
+  display: flex;
+
+  > * {
+    flex-grow: 1;
+  }
+
+  + .fieldset {
+    margin-top: 16px;
+  }
+}

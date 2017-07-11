@@ -1,5 +1,7 @@
 import { h, Component } from "preact";
-import { database } from "../../components/firebase";
+import { database } from "../../../components/firebase";
+
+import style from "./style";
 
 export default class NewExercise extends Component {
   constructor() {
@@ -51,7 +53,7 @@ export default class NewExercise extends Component {
         <h2>New Exercise</h2>
 
         <form>
-          <p>
+          <div class={style.fieldset}>
             <input
               type="text"
               name="name"
@@ -59,8 +61,8 @@ export default class NewExercise extends Component {
               placeholder="What's the exercise named?"
               value={this.state.name}
             />
-          </p>
-          <p>
+          </div>
+          <div class={style.fieldset}>
             <input
               type="number"
               name="setting"
@@ -68,8 +70,8 @@ export default class NewExercise extends Component {
               placeholder="What's the starting setting?"
               value={this.state.setting}
             />
-          </p>
-          <p>
+          </div>
+          <div class={style.fieldset}>
             <input
               type="text"
               name="settingType"
@@ -77,8 +79,8 @@ export default class NewExercise extends Component {
               placeholder="What's it measured in?"
               value={this.state.settingType}
             />
-          </p>
-          <p>
+          </div>
+          <div class={style.fieldset}>
             <input
               type="number"
               name="reps"
@@ -86,8 +88,8 @@ export default class NewExercise extends Component {
               placeholder="How many repetitions?"
               value={this.state.reps}
             />
-          </p>
-          <p>
+          </div>
+          <div class={style.fieldset}>
             <input
               type="number"
               name="raiseAfter"
@@ -95,8 +97,8 @@ export default class NewExercise extends Component {
               placeholder="How many sets to raise the setting?"
               value={this.state.raiseAfter}
             />
-          </p>
-          <p>
+          </div>
+          <div class={style.fieldset}>
             <input
               type="number"
               name="raiseBy"
@@ -104,7 +106,7 @@ export default class NewExercise extends Component {
               placeholder="How much to raise the setting?"
               value={this.state.raiseBy}
             />
-          </p>
+          </div>
           <input
             disable={!name}
             onClick={this.handleSubmit}
