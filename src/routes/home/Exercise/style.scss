@@ -53,7 +53,15 @@ h3 {
   height: 60px;
   justify-content: center;
   line-height: 1;
+  transition: background 0.3s ease-in-out;
   width: 60px;
+
+  &:hover,
+  &:active,
+  &:focus {
+    background: lighten(#7b9058, 10%);
+    outline: 0;
+  }
 }
 
 .buttonFailed {
@@ -67,10 +75,18 @@ h3 {
   justify-content: center;
   line-height: 1;
   width: 60px;
+
+  &:hover,
+  &:active,
+  &:focus {
+    background: lighten(#a24335, 10%);
+    outline: 0;
+  }
 }
 
 .completedList {
   display: flex;
+  height: 10px;
   margin: 0;
   padding: 0;
 }
