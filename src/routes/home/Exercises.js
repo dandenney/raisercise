@@ -18,7 +18,9 @@ export default class Exercises extends Component {
       completed: true
     }).length;
 
-    if (completedCount < raiseAfter) {
+    console.log(completedCount, raiseAfter);
+
+    if (completedCount < raiseAfter - 1) {
       database
         .ref("/" + currentUser.uid)
         .child("exercises")
@@ -39,7 +41,7 @@ export default class Exercises extends Component {
         .push({
           completed: true,
           completedDate: Date.now(),
-          setting: newSetting
+          setting: setting
         });
       database
         .ref("/" + currentUser.uid)

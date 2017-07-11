@@ -1,0 +1,81 @@
+.exercise {
+  background: #ffffff;
+  box-shadow: 0 3px 6px rgba(#000, 0.2);
+  color: #203661;
+  padding: 10px;
+  text-align: center;
+
+  + .exercise {
+    margin-top: 20px;
+  }
+}
+
+h3 {
+  color: #adbfe4;
+  margin: 0;
+  text-transform: uppercase;
+}
+
+.setting {
+  font-weight: bold;
+  line-height: 1;
+  margin-top: 5px;
+}
+
+.settingText {
+  font-size: 60px;
+}
+
+.instructions {
+  font-size: 12px;
+}
+
+.buttons {
+  align-items: center;
+  display: flex;
+  justify-content: center;
+}
+
+.buttonCompleted {
+  background: #27ae60;
+  border: 0;
+  border-radius: 32px;
+  box-shadow: 0 2px 3px rgba(#000, 0.1);
+  color: #ffffff;
+  font-family: inherit;
+  font-size: 16px;
+  font-weight: bold;
+  line-height: 1;
+  padding: 12px 30px;
+}
+
+.buttonFailed {
+  background: #b51f24;
+  border: 0;
+  border-radius: 32px;
+  box-shadow: 0 2px 3px rgba(#000, 0.1);
+  color: #ffffff;
+  font-family: inherit;
+  font-size: 16px;
+  font-weight: bold;
+  line-height: 1;
+  margin-right: 10px;
+  padding: 6px 20px;
+}
+
+.completedList {
+  display: flex;
+}
+
+.completed {
+  background: rgba(#27ae60, 0.5);
+  border-radius: 50%;
+  height: 20px;
+  list-style: none;
+  margin: 0;
+  width: 20px;
+
+  + .completed {
+    margin-left: 5px;
+  }
+}
