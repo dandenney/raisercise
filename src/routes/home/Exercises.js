@@ -18,8 +18,6 @@ export default class Exercises extends Component {
       completed: true
     }).length;
 
-    console.log(completedCount, raiseAfter);
-
     if (completedCount < raiseAfter - 1) {
       database
         .ref("/" + currentUser.uid)
