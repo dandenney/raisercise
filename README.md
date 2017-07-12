@@ -3,6 +3,7 @@ A progress tracker for increasing weights and speed while exercising. It's partl
 
 ## Tooling Setup
 
-Install [preact-cli](https://github.com/developit/preact-cli) `npm i -g preact-cli`
-`npm install`
-`preact watch`
+* Install [preact-cli](https://github.com/developit/preact-cli) 
+* `npm i -g preact-cli`
+* `npm install`
+* `preact watch`
