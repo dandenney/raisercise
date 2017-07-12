@@ -30,7 +30,17 @@ export default class Exercises extends Component {
           setting: setting
         });
     } else {
-      const newSetting = Number(setting) + Number(raiseBy);
+      function checkForDecimal() {
+        if (raiseBy.indexOf(".") === -1) {
+          return Number(setting) + Number(raiseBy);
+        } else {
+          return (Number(setting) + Number(raiseBy)).toFixed(1);
+        }
+      }
+
+      const newSetting = checkForDecimal();
+
+      console.log(newSetting);
       database
         .ref("/" + currentUser.uid)
         .child("exercises")
