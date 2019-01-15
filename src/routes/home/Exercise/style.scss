@@ -97,7 +97,7 @@ h3 {
 .completed {
   height: 10px;
   list-style: none;
-  width: percentage(1/6);
+  width: percentage(1/12);
 
   &:nth-child(1) {
     background: linear-gradient( to right, rgba(#7b9058, 0.4), rgba(#7b9058, 0.5));
