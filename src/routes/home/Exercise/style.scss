@@ -100,18 +100,36 @@ h3 {
   width: percentage(1/12);
 
   &:nth-child(1) {
-    background: linear-gradient( to right, rgba(#7b9058, 0.4), rgba(#7b9058, 0.5));
+    background: linear-gradient( to right, rgba(#7b9058, 0.35), rgba(#7b9058, 0.4));
   }
   &:nth-child(2) {
-    background: linear-gradient( to right, rgba(#7b9058, 0.5), rgba(#7b9058, 0.6));
+    background: linear-gradient( to right, rgba(#7b9058, 0.4), rgba(#7b9058, 0.45));
   }
   &:nth-child(3) {
-    background: linear-gradient( to right, rgba(#7b9058, 0.6), rgba(#7b9058, 0.7));
+    background: linear-gradient( to right, rgba(#7b9058, 0.45), rgba(#7b9058, 0.5));
   }
   &:nth-child(4) {
-    background: linear-gradient( to right, rgba(#7b9058, 0.7), rgba(#7b9058, 0.8));
+    background: linear-gradient( to right, rgba(#7b9058, 0.5), rgba(#7b9058, 0.55));
   }
   &:nth-child(5) {
-    background: linear-gradient( to right, rgba(#7b9058, 0.8), rgba(#7b9058, 0.9));
+    background: linear-gradient( to right, rgba(#7b9058, 0.55), rgba(#7b9058, 0.6));
+  }
+  &:nth-child(6) {
+    background: linear-gradient( to right, rgba(#7b9058, 0.6), rgba(#7b9058, 0.65));
+  }
+  &:nth-child(7) {
+    background: linear-gradient( to right, rgba(#7b9058, 0.65), rgba(#7b9058, 0.7));
+  }
+  &:nth-child(8) {
+    background: linear-gradient( to right, rgba(#7b9058, 0.7), rgba(#7b9058, 0.75));
+  }
+  &:nth-child(9) {
+    background: linear-gradient( to right, rgba(#7b9058, 0.75), rgba(#7b9058, 0.8));
+  }
+  &:nth-child(10) {
+    background: linear-gradient( to right, rgba(#7b9058, 0.8), rgba(#7b9058, 0.85));
+  }
+  &:nth-child(11) {
+    background: linear-gradient( to right, rgba(#7b9058, 0.85), rgba(#7b9058, 0.9));
   }
 }
